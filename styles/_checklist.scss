@@ -1,0 +1,134 @@
+.checklist {
+    .meta-titulo-checklist {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .titulo-bloco {
+            margin-bottom: 0;
+        }
+        .acoes-checklist {
+            display: flex;
+            align-items: center;
+
+            [botao] {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 15px;
+                line-height: 25px;
+                border-radius: 20px;
+                font-size: 0.75em;
+                font-weight: 500;
+                background-color: transparent;
+
+                &[cor=vermelho] {
+                    background-color: #fae2e4;
+                    transition: .3s;
+                }
+
+                &[cor=cinza] {
+                    background-color: #f3f3f3;
+                    transition: .3s;
+                }
+            }
+        }
+    }
+    &__item {
+        position: relative;
+        display: flex;
+        margin-bottom: 10px;
+        cursor: move;
+        background-color: #fff;
+        &.ui-sortable-helper {
+            #subtarefa_conteudo {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+        }
+        .seletor-item {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            position: relative;
+            margin-top: 10px;
+            input {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 0;
+                z-index: 1;
+                cursor: pointer;
+            }
+            .caixa-selecao {
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                border-radius: 2px;
+                border: 1px solid #ccc;
+            }
+            &:hover {
+                .caixa-selecao {
+                    background-color: #e8ffe2;
+                }
+            }
+            &.selecionado {
+                .caixa-selecao {
+                    background-color: var(--cor-projeto);
+                    border: 1px solid var(--cor-projeto);
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11.921 8.67'%3E%3Cpath d='M11.794,11.171a.544.544,0,0,1-.384-.158L8.158,7.761a.542.542,0,1,1,.766-.766l2.868,2.868,7.2-7.2a.542.542,0,0,1,.766.766L15.332,7.857l-3.156,3.156a.54.54,0,0,1-.384.158Z' transform='translate(-8 -2.501)' fill='%23000'/%3E%3C/svg%3E");
+                    background-position: center;
+                    background-size: 12px;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+        .conteudo-item {
+            flex-basis: 0;
+            flex-grow: 1;
+            #subtarefa_conteudo {
+                min-height: initial;
+                overflow: hidden;
+                font-size: 14px;
+                line-height: 1.3em;
+                padding: 10px;
+                transition: border 0.2s;
+                cursor: auto;
+                .imagem-print {
+                    display: inline;
+                    margin: 0 5px;
+                    img {
+                        max-width: 40px;
+                        max-height: 20px;
+                        display: inline-block;
+                        margin-right: 5px;
+                        position: relative;
+                        top: 4px;
+                    }
+                    span {
+                        display: none;
+                        font-weight: 400;
+                        text-decoration: underline;
+                        font-style: italic;
+                    }
+                }
+                a {
+                    display: inline-block;
+                    background-color: #eee;
+                    padding: 2px;
+                    border-radius: 2px;
+                    margin-right: 5px;
+                }
+                &:focus {
+                    border: 1px solid #686868;
+                }
+            }
+        }
+    }
+}

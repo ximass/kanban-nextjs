@@ -1,0 +1,32 @@
+.historico {
+    position: relative;
+    &::-webkit-scrollbar {
+        width: 10px;
+        margin-top: 20px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #e0e0e0;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #ccc;
+    }
+    &__item {
+        margin-bottom: 15px;
+        h6 {
+            font-size: 12px;
+            opacity: 0.7;
+            font-style: italic;
+            line-height: 1.1em;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.3em;
+            margin-bottom: 0;
+        }
+    }
+}

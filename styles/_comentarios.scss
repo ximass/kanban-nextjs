@@ -1,0 +1,101 @@
+.comentarios {
+    position: relative;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    &__item {
+        font-size: 12px;
+        margin-bottom: 15px;
+        &:first-child {
+            margin-bottom: 0;
+        }
+        h2 {
+            opacity: 0.7;
+            font-style: italic;
+            line-height: 1.1em;
+            margin-bottom: 5px;
+        }
+        .conteudo-comentario {
+            position: relative;
+            padding-left: 6px;
+            border-radius: 6px;
+            background-color: transparent;
+            display: flex;
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: #e0e0e0;
+                left: 2px;
+                top: 7px;
+                transform: rotate(45deg);
+            }
+            [contenteditable] {
+                height: auto;
+                min-height: initial;
+                border: 0;
+                padding: 10px;
+                background-color: #e0e0e0;
+                color: #434343;
+                width: auto;
+                max-width: 100%;
+                .imagem-print {
+                    display: inline;
+                    margin: 0 5px;
+                    img {
+                        max-width: 20px;
+                        max-height: 20px;
+                        margin-right: 5px;
+                    }
+                    span {
+                        font-style: italic;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .acoes-comentario {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            justify-content: flex-end;
+            a,
+            button {
+                display: inline-flex;
+                align-items: center;
+                font-size: 12px;
+                margin-left: 10px;
+                svg {
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 5px;
+                }
+            }
+        }
+        &.editavel {
+            h2 {
+                text-align: right;
+            }
+            .conteudo-comentario {
+                padding-left: 0;
+                padding-right: 6px;
+                justify-content: flex-end;
+                &::before {
+                    left: initial;
+                    right: 2px;
+                    background-color: #fff;
+                }
+                [contenteditable] {
+                    color: #555;
+                    width: auto;
+                    background-color: #fff;
+                }
+            }
+            .botoes-acoes {
+                text-align: right;
+            }
+        }
+    }
+}
