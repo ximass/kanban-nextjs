@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default function Card({ tarefa }) {
+export default function Card(props) {
+    const tarefa = props.tarefa;
+
     return (
-        <div key={tarefa._id} tarefa={tarefa} className="item" style={{ background: '#fff', borderLeft: '7px solid #000' }}>
+        <div key={tarefa.id} className="item" style={{ background: '#fff', borderLeft: '7px solid #000' }}>
             <div className="estados-card">
                 <span className="prazo">
                     {tarefa.prazo}
@@ -51,13 +53,13 @@ export default function Card({ tarefa }) {
                         <span style={{ color: '#EB8EF6', backgroundColor: '#FC6B4C' }}>Importante</span>
                     </div>
                     <h2>
-                        Tarefa 1
-                        <span>Jorge</span>
+                        { tarefa.nome }
+                        <span>{ tarefa.cliente }</span>
                     </h2>
                 </div>
                 <div className="meta-infos">
                     <div className="responsavel">
-                        <span>Jones</span>
+                        <span>{ tarefa.responsavel }</span>
                     </div>
                     <div className="criada-contagem">
                         <div className="criada-em">23/04/2022</div>
