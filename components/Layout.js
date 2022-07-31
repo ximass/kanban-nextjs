@@ -2,7 +2,6 @@ import React from 'react';
 import Script from 'next/script'
 import Head from 'next/head';
 import Header from '../components/Header';
-import Home from '../components/Home';
 
 export default function Layout() {
 
@@ -16,7 +15,6 @@ export default function Layout() {
             <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" />
             <Script src="https://dev.modelosistema.bravo.st/js/extensao/bravoselect.min.js" />
             <Header/>
-            <Home/>
             <footer>
             </footer>
         </div>

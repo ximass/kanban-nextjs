@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function Card() {
+export default function Card({ tarefa }) {
     return (
-        <div className="item" style={{ background: '#fff', borderLeft: '7px solid #000' }}>
+        <div key={tarefa._id} tarefa={tarefa} className="item" style={{ background: '#fff', borderLeft: '7px solid #000' }}>
             <div className="estados-card">
                 <span className="prazo">
-                    Entrega 23/04/2023
+                    {tarefa.prazo}
                 </span>
             </div>
             <div className="acoes-cartao">
@@ -26,7 +26,7 @@ export default function Card() {
                         <span>Mover</span>
                     </a>
                     <button id="desacompanhar">
-                        <span style={{fontSize: '11px'}}>Desacompanhar</span>
+                        <span style={{ fontSize: '11px' }}>Desacompanhar</span>
                     </button>
                     <button id="acompanhar">
                         <span>Acompanhar</span>
@@ -48,7 +48,7 @@ export default function Card() {
             <a>
                 <div className="meta-titulo-item">
                     <div className="sub-titulo">
-                        <span style={{color: '#EB8EF6', backgroundColor: '#FC6B4C'}}>Importante</span>
+                        <span style={{ color: '#EB8EF6', backgroundColor: '#FC6B4C' }}>Importante</span>
                     </div>
                     <h2>
                         Tarefa 1
