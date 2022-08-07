@@ -1,8 +1,9 @@
 import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { getTarefas } from '../lib/database/getTarefas';
 import dynamic from "next/dynamic";
+import connectDB from '../lib/utils/mongodb';
+import Tarefa from '../models/Tarefa';
 
 const Card = dynamic(import('../components/Card'));
 
@@ -24,7 +25,21 @@ export default function Index({ tarefas }) {
 
     cards.splice(result.destination.index, 0, cardOrdenado);
 
+    cards.forEach((card, index) => {
+      card.ordem = index;
+    });
+
     atualizarOrdem(cards);
+
+    fetch("/api/tarefa", {
+      method: "POST",
+      body: JSON.stringify(cards),
+      headers: 
+      {
+        "Content-Type": 
+        "application/json",
+      },
+    });
   }
 
   return (
@@ -49,7 +64,7 @@ export default function Index({ tarefas }) {
                         <div className="conteudo-coluna" {...provided.droppableProps} ref={provided.innerRef}>
                           {
                             tarefasLista.map((tarefa, index) => 
-                              <Draggable key={tarefa.id} draggableId={tarefa.id} index={index}>
+                              <Draggable key={tarefa.id} draggableId={tarefa.id.toString()} index={index}>
                                 {(provided) => (
                                   <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                     <Card tarefa={tarefa} />
@@ -74,11 +89,15 @@ export default function Index({ tarefas }) {
 }
 
 export async function getServerSideProps() {
-  const tarefas = await getTarefas();
+  await connectDB();
 
-  return {
-    props: {
-      tarefas: JSON.parse(JSON.stringify(tarefas)),
-    }
-  };
+  const result = await Tarefa.find({});
+
+  const tarefas = result.map((tarefa) => {
+    tarefa._id = tarefa._id.toString();
+
+    return tarefa;
+  })
+
+  return { props: { tarefas: JSON.parse(JSON.stringify(tarefas)) } }
 }
